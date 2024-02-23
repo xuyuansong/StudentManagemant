@@ -8,12 +8,12 @@ MainWindow::MainWindow(QWidget *parent)
 {
     ui->setupUi(this);
 
-    QSqlDatabase db=QSqlDatabase::addDatabase("QMYSQL");
-    db.setHostName("192.168.211.153");
-    db.setDatabaseName("studnetmangemant");
-    db.setUserName("root");
-    db.setPassword("123456");
-    if(db.open())
+    this->db=QSqlDatabase::addDatabase("QMYSQL");
+    this->db.setHostName("192.168.211.153");
+    this->db.setDatabaseName("studentmanagemant");
+    this->db.setUserName("root");
+    this->db.setPassword("123456");
+    if(this->db.open())
     {
         qDebug()<<"连接数据库成功";
     }else
@@ -36,6 +36,14 @@ void MainWindow::on_LoginBtn_clicked()
     QString username=ui->user->text();
     QString password=ui->password->text();
     QString ident;
+
+    if(!this->db.open())
+    {
+        QMessageBox::warning(nullptr,"警告","数据库连接失败");
+        return;
+    }
+
+    //判断用户类型
     if(ui->studentRadio->isChecked())
     {
         ident="student";
@@ -47,7 +55,7 @@ void MainWindow::on_LoginBtn_clicked()
         QMessageBox::warning(nullptr,"警告","请选择用户类型");
         return;
     }
-    //qDebug()<<"输入的用户名:"<<username<<" "<<"密码:"<<password;
+
     QSqlQuery query;
     QString selectSql="select * from " + ident + " where username='" + username+ "'";
     query.exec(selectSql);
