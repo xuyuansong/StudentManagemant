@@ -19,17 +19,20 @@ SOURCES += \
     homewindow.cpp \
     main.cpp \
     mainwindow.cpp \
-    registerwindow.cpp
+    registerwindow.cpp \
+    updatewindow.cpp
 
 HEADERS += \
     homewindow.h \
     mainwindow.h \
-    registerwindow.h
+    registerwindow.h \
+    updatewindow.h
 
 FORMS += \
     homewindow.ui \
     mainwindow.ui \
-    registerwindow.ui
+    registerwindow.ui \
+    updatewindow.ui
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin

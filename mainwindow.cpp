@@ -9,19 +9,6 @@ MainWindow::MainWindow(QWidget *parent)
 {
     ui->setupUi(this);
 
-    this->db=QSqlDatabase::addDatabase("QMYSQL");
-    this->db.setHostName("192.168.211.153");
-    this->db.setDatabaseName("studentmanagemant");
-    this->db.setUserName("root");
-    this->db.setPassword("123456");
-    if(this->db.open())
-    {
-        qDebug()<<"连接数据库成功";
-    }else
-    {
-        qDebug()<<"连接数据库失败";
-    }
-
     ui->LoginBtn->setText("登录");
     ui->downBtn->setText("关闭");
     ui->registerBtn->setText("注册");
@@ -29,7 +16,6 @@ MainWindow::MainWindow(QWidget *parent)
 
 MainWindow::~MainWindow()
 {
-    this->db.close();
     delete ui;
 }
 
@@ -39,11 +25,11 @@ void MainWindow::on_LoginBtn_clicked()
     QString password=ui->password->text();
     QString ident;
 
-    if(!this->db.open())
-    {
-        QMessageBox::warning(nullptr,"警告","数据库连接失败");
-        return;
-    }
+//    if(!db.open())
+//    {
+//        QMessageBox::warning(nullptr,"警告","数据库连接失败");
+//        return;
+//    }
 
     //判断用户类型
     if(ui->studentRadio->isChecked())
@@ -96,6 +82,5 @@ void MainWindow::on_downBtn_clicked()
 void MainWindow::on_registerBtn_clicked()
 {
     registerwindow* reg = new registerwindow();
-    reg->setDb(this->db);
     reg->show();
 }

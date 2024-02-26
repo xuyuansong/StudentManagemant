@@ -14,10 +14,6 @@ registerwindow::~registerwindow()
     delete ui;
 }
 
-void registerwindow::setDb(QSqlDatabase db)
-{
-    this->m_db = db;
-}
 
 void registerwindow::on_checkRegistBtn_clicked()
 {
@@ -42,10 +38,6 @@ void registerwindow::on_checkRegistBtn_clicked()
             QMessageBox::warning(nullptr,"警告","该用户已存在");
         }else
         {
-            if(!this->m_db.open())
-            {
-                QMessageBox::warning(nullptr,"警告","连接数据库失败,无法注册用户");
-            }
             QString insertSql="insert into student value('" + ui->username->text() + "','" + ui->sex->text() + "','" +
                     ui->age->text() + "','" + ui->zhuanyeClass->text() + "','" + ui->xuehao->text() + "','" + ui->home->text() +
                     "','" + ui->password->text() + "')";

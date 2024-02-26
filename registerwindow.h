@@ -19,8 +19,6 @@ public:
     explicit registerwindow(QWidget *parent = nullptr);
     ~registerwindow();
 
-    void setDb(QSqlDatabase db);
-
 private slots:
     void on_checkRegistBtn_clicked();
 
