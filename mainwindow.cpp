@@ -1,6 +1,7 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
 #include "homewindow.h"
+#include "registerwindow.h"
 
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
@@ -28,6 +29,7 @@ MainWindow::MainWindow(QWidget *parent)
 
 MainWindow::~MainWindow()
 {
+    this->db.close();
     delete ui;
 }
 
@@ -93,5 +95,7 @@ void MainWindow::on_downBtn_clicked()
 
 void MainWindow::on_registerBtn_clicked()
 {
-
+    registerwindow* reg = new registerwindow();
+    reg->setDb(this->db);
+    reg->show();
 }
