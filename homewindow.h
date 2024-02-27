@@ -4,6 +4,7 @@
 #include <QWidget>
 #include <QString>
 #include <QMessageBox>
+#include <QDebug>
 
 namespace Ui {
 class homeWindow;
