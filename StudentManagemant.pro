@@ -16,6 +16,7 @@ DEFINES += QT_DEPRECATED_WARNINGS
 #DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
 
 SOURCES += \
+    deletewindow.cpp \
     homewindow.cpp \
     main.cpp \
     mainwindow.cpp \
@@ -23,12 +24,14 @@ SOURCES += \
     updatewindow.cpp
 
 HEADERS += \
+    deletewindow.h \
     homewindow.h \
     mainwindow.h \
     registerwindow.h \
     updatewindow.h
 
 FORMS += \
+    deletewindow.ui \
     homewindow.ui \
     mainwindow.ui \
     registerwindow.ui \

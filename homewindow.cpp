@@ -3,6 +3,7 @@
 #include "registerwindow.h"
 #include "mainwindow.h"
 #include "updatewindow.h"
+#include "deletewindow.h"
 
 homeWindow::homeWindow(QWidget *parent) :
     QWidget(parent),
@@ -52,7 +53,14 @@ void homeWindow::on_insertBtn_clicked()
 
 void homeWindow::on_deleteBtn_clicked()
 {
-
+    if(m_username=="admin")
+    {
+        deletewindow* del = new deletewindow();
+        del->show();
+    }else
+    {
+        QMessageBox::warning(nullptr,"警告","需管理员才能删除用户");
+    }
 }
 
 void homeWindow::on_selectBtn_clicked()
